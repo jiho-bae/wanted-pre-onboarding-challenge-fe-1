@@ -1,5 +1,5 @@
 import LoginForm from '@components/molecules/LoginForm';
-import MyLink from '@src/components/atoms/MyLink';
+import MyLink from '@components/atoms/MyLink';
 
 export default function Home() {
   return (
