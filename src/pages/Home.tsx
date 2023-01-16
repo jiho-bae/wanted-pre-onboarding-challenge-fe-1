@@ -1,8 +1,10 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import userApi from '../apis/user';
+import Input from '../components/atoms/Input';
 import Button from '../components/atoms/Button';
+
+import userApi from '../apis/user';
 
 const REGEX = {
   email: /[A-Za-z0-9.]+@[A-Za-z0-9]+\.[A-Za-z0-9]+/,
@@ -54,8 +56,8 @@ export default function Home() {
         onSubmit={onSubmit}
         style={{ width: '50%', display: 'flex', flexDirection: 'column' }}
       >
-        <input type="email" name="email" ref={emailRef} />
-        <input type="password" name="password" ref={passwordRef} />
+        <Input type="email" name="email" ref={emailRef} />
+        <Input type="password" name="password" ref={passwordRef} />
         <Button isActivate={isActiveBtn}>로그인</Button>
       </form>
     </div>
