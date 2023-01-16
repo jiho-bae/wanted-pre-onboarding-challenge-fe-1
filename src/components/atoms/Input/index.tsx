@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react';
 import styled from '@emotion/styled';
 
-import { FontSize, BorderRadius } from '@src/styles';
+import { FontSize, BorderRadius, Media } from '@src/styles';
 
 const Input = styled.input`
   ${(_) => `
@@ -10,8 +10,19 @@ const Input = styled.input`
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: ${BorderRadius.s};
     border: none;
-    font-size: ${FontSize.m};
+    font-size: ${FontSize.l};
     font-weight: 600;
+    padding:5px;
+
+    @media ${Media.s}{
+      height:4rem;
+    }
+    @media ${Media.m}{
+      height:5rem;
+    }
+    @media ${Media.l}{
+      height:6rem;
+    }
 `}
 `;
 
