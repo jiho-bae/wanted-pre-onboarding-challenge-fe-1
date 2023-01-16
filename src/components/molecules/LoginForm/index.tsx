@@ -1,17 +1,14 @@
-import { useRef, useState, ComponentProps } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from '@emotion/styled';
 
+import Form from '@components/atoms/Form';
 import Input from '@components/atoms/Input';
 import Button from '@components/atoms/Button';
 
-import { BorderRadius } from '@src/styles';
 import userApi from '@apis/user';
 import { REGEX } from '@libs/constant';
 
-interface LoginFormProps extends ComponentProps<'form'> {}
-
-export default function LoginForm({ children, ...props }: LoginFormProps) {
+export default function LoginForm() {
   const [isActiveBtn, setIsActiveBtn] = useState(false);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -50,22 +47,10 @@ export default function LoginForm({ children, ...props }: LoginFormProps) {
   }
 
   return (
-    <S.Form {...props} onChange={onChange} onSubmit={onSubmit}>
+    <Form onChange={onChange} onSubmit={onSubmit}>
       <Input type="email" name="email" ref={emailRef} />
       <Input type="password" name="password" ref={passwordRef} />
       <Button isActivate={isActiveBtn}>로그인</Button>
-    </S.Form>
+    </Form>
   );
 }
-
-const S = {
-  Form: styled.form`
-    ${(_) => `
-    width:100%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: ${BorderRadius.s};
-    border: none;
-    background-color:white;
-`}
-  `,
-};
