@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import { TOKEN_KEY } from '@libs/constant';
 
 const addInterceptors = (instance: AxiosInstance) => {
   instance.interceptors.request.use(
@@ -24,9 +25,12 @@ const addInterceptors = (instance: AxiosInstance) => {
 const addAuthInterceptors = (instance: AxiosInstance) => {
   instance.interceptors.request.use(
     (config) => {
-      // get token by localstorage
-      // if token is existed, return config.
-      // else add token to config object.
+      const token = localStorage.getItem(TOKEN_KEY);
+      if (!token) return config;
+
+      config.headers = {
+        Authorization: token,
+      };
       return config;
     },
     (error) => {
