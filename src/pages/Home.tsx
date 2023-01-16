@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Layout>
       <LoginForm />
-      <MyLink to="/auth/join">{'회원가입 >'}</MyLink>
+      <MyLink link="/auth/join">{'회원가입 >'}</MyLink>
     </Layout>
   );
 }

@@ -6,7 +6,7 @@ export default function Join() {
   return (
     <Layout>
       <JoinForm />
-      <MyLink to="/">{'로그인 >'}</MyLink>
+      <MyLink link="/">{'로그인 >'}</MyLink>
     </Layout>
   );
 }
