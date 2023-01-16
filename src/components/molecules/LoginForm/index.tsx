@@ -2,16 +2,12 @@ import { useRef, useState, ComponentProps } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 
-import Input from '../../atoms/Input';
-import Button from '../../atoms/Button';
+import Input from '@components/atoms/Input';
+import Button from '@components/atoms/Button';
 
-import { BorderRadius } from '../../../styles';
-import userApi from '../../../apis/user';
-
-const REGEX = {
-  email: /[A-Za-z0-9.]+@[A-Za-z0-9]+\.[A-Za-z0-9]+/,
-  password: /[A-Za-z0-9!@#$%^&*()_+]{8,20}/,
-};
+import { BorderRadius } from '@src/styles';
+import userApi from '@apis/user';
+import { REGEX } from '@libs/constant';
 
 interface LoginFormProps extends ComponentProps<'form'> {}
 

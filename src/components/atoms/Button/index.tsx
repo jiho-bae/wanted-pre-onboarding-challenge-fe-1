@@ -1,6 +1,7 @@
 import { ComponentProps } from 'react';
 import styled from '@emotion/styled';
-import { FontSize, Colors, BorderRadius } from '../../../styles';
+
+import { FontSize, Colors, BorderRadius } from '@src/styles';
 
 const S = {
   Button: styled.button<ButtonProps>`

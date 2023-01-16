@@ -1,6 +1,7 @@
 import { ComponentProps } from 'react';
 import styled from '@emotion/styled';
-import { FontSize, BorderRadius } from '../../../styles';
+
+import { FontSize, BorderRadius } from '@src/styles';
 
 const Input = styled.input`
   ${(_) => `
