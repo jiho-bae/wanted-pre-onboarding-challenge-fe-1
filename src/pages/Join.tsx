@@ -2,15 +2,17 @@ import Layout from '@components/templates/Layout';
 import JoinForm from '@components/molecules/JoinForm';
 import MyLink from '@components/atoms/MyLink';
 import Title from '@components/atoms/Title';
+import Gap from '@components/atoms/Gap';
 
-import { FontSize, FontWeight } from '@src/styles';
+import { Colors, FontSize, FontWeight, GapSize } from '@src/styles';
 
 export default function Join() {
   return (
     <Layout>
-      <Title fontSize={FontSize.xl} fontWeight={FontWeight.bold}>
+      <Title fontSize={FontSize.xl} fontWeight={FontWeight.bold} color={Colors.react}>
         가입하기
       </Title>
+      <Gap size={GapSize.l} />
       <JoinForm />
       <MyLink link="/">{'로그인 >'}</MyLink>
     </Layout>

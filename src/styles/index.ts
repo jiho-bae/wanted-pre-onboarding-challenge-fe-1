@@ -3,3 +3,4 @@ export { FontWeight } from './font';
 export { Colors } from './colors';
 export { Media } from './media';
 export { BorderRadius } from './border';
+export { GapSize } from './gap';
