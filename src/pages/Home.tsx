@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import Button from '../components/atoms/Button';
 
 const REGEX = {
   email: /[A-Za-z0-9.]+@[A-Za-z0-9]+\.[A-Za-z0-9]+/,
@@ -27,7 +28,7 @@ export default function Home() {
       <form onChange={onChangeForm} style={{ width: '50%', display: 'flex', flexDirection: 'column' }}>
         <input type="email" name="email" ref={emailRef} />
         <input type="password" name="password" ref={passwordRef} />
-        <button style={{ backgroundColor: `${isActiveBtn ? 'black' : 'white'}` }}>로그인</button>
+        <Button isActivate={isActiveBtn}>로그인</Button>
       </form>
     </div>
   );
