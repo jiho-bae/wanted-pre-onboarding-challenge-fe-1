@@ -7,8 +7,8 @@ interface UserApiTypes {
 }
 
 const userApi: UserApiTypes = {
-  signUp: (userInfo) => request.post('/user/create', userInfo),
-  login: (userInfo) => request.post('/user/login', userInfo),
+  signUp: (userInfo) => request.post('/users/create', userInfo),
+  login: (userInfo) => request.post('/users/login', userInfo),
 };
 
 export default userApi;
