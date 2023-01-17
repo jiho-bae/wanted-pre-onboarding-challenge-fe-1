@@ -6,10 +6,11 @@ import Button from '@components/atoms/Button';
 
 import todoApi from '@apis/todo';
 import { PATH, TOKEN_KEY } from '@libs/constant';
+import { TodoType } from '@src/types';
 
 export default function Todos() {
-  const [todos, setTodos] = useState([]);
   const navigate = useNavigate();
+  const [todos, setTodos] = useState<TodoType[]>([]);
 
   function onClickLogout(e: React.MouseEvent) {
     e.preventDefault();
