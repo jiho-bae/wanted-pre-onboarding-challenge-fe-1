@@ -4,3 +4,9 @@ export const REGEX = {
 };
 
 export const TOKEN_KEY = 'token';
+
+export const PATH = {
+  home: '/',
+  join: '/auth/join',
+  todos: '/todos',
+};

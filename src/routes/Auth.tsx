@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
-import { TOKEN_KEY } from '@src/libs/constant';
+import { TOKEN_KEY, PATH } from '@src/libs/constant';
 
 interface AuthProps {
   isAuthPage: boolean;
@@ -8,7 +8,7 @@ interface AuthProps {
 
 export default function Auth({ isAuthPage }: AuthProps) {
   const isAuthenticated = !!localStorage.getItem(TOKEN_KEY);
-  const redirectUrl = isAuthPage ? '/' : '/todos';
+  const redirectPath = isAuthPage ? PATH.home : PATH.todos;
 
-  return isAuthPage === isAuthenticated ? <Outlet /> : <Navigate replace to={redirectUrl} />;
+  return isAuthPage === isAuthenticated ? <Outlet /> : <Navigate replace to={redirectPath} />;
 }

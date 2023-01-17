@@ -5,6 +5,7 @@ import Title from '@components/atoms/Title';
 import Gap from '@components/atoms/Gap';
 
 import { Colors, FontSize, FontWeight, GapSize } from '@src/styles';
+import { PATH } from '@libs/constant';
 
 export default function Join() {
   return (
@@ -14,7 +15,7 @@ export default function Join() {
       </Title>
       <Gap size={GapSize.l} />
       <JoinForm />
-      <MyLink link="/">{'로그인 >'}</MyLink>
+      <MyLink link={PATH.home}>{'로그인 >'}</MyLink>
     </Layout>
   );
 }
