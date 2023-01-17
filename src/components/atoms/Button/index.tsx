@@ -30,10 +30,10 @@ const S = {
 };
 
 interface ButtonProps extends ComponentProps<'button'> {
-  isActivate: boolean;
+  isActivate?: boolean;
 }
 
-export default function Button({ children, isActivate, ...props }: ButtonProps) {
+export default function Button({ children, isActivate = true, ...props }: ButtonProps) {
   return (
     <S.Button {...props} isActivate={isActivate}>
       {children}
