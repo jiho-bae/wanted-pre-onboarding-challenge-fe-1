@@ -2,16 +2,18 @@ import { Routes, Route } from 'react-router-dom';
 import Home from '@pages/Home';
 import Join from '@pages/Join';
 import Todos from '@pages/Todos';
-import withAuth from './withAuth';
+import Auth from './Auth';
 
 export default function Router() {
-  const AuthTodos = withAuth(Todos);
-
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/auth/join" element={<Join />} />
-      <Route path="/todos" element={<AuthTodos />} />
+      <Route element={<Auth isAuthPage={false} />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/auth/join" element={<Join />} />
+      </Route>
+      <Route element={<Auth isAuthPage />}>
+        <Route path="/todos" element={<Todos />} />
+      </Route>
     </Routes>
   );
 }
