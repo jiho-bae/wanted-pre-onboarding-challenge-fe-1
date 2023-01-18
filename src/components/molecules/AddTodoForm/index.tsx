@@ -16,6 +16,14 @@ export default function AddTodoForm({ addTodo }: AddTodoFormProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
 
+  function resetRef() {
+    if (!titleRef.current || !contentRef.current) return;
+
+    titleRef.current.value = '';
+    contentRef.current.value = '';
+    titleRef.current.focus();
+  }
+
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
 
@@ -31,6 +39,7 @@ export default function AddTodoForm({ addTodo }: AddTodoFormProps) {
     } = await todoApi.create({ title, content });
 
     addTodo(todo);
+    resetRef();
   }
 
   return (
