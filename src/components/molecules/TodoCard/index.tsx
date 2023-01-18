@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from '@emotion/styled';
 import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai';
 
@@ -6,6 +5,7 @@ import EditTodoForm from '@components/molecules/EditTodoForm';
 import ContentTitle from '@components/molecules/ContentTitle';
 import Card from '@components/atoms/Card';
 
+import { useToggle } from '@src/hooks';
 import { Colors, FontSize } from '@src/styles';
 import { TodoType } from '@src/types';
 
@@ -15,13 +15,9 @@ interface TodoCardProps extends React.ComponentProps<'li'> {
 }
 
 export default function TodoCard({ updateTodo, todo, ...props }: TodoCardProps) {
-  const [isEditMode, seIsEditMode] = useState(false);
+  const [isEditMode, toggleEditMode] = useToggle();
   const { title, content } = todo;
   const contentChunk = content.split('\n');
-
-  function toggleEditMode() {
-    seIsEditMode((prev) => !prev);
-  }
 
   return (
     <Card {...props}>

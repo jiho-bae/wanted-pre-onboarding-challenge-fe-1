@@ -9,10 +9,11 @@ import Button from '@components/atoms/Button';
 import todoApi from '@apis/todo';
 import { PATH, TOKEN_KEY } from '@libs/constant';
 import { TodoType } from '@src/types';
+import { useToggle } from '@src/hooks';
 
 export default function Todos() {
   const navigate = useNavigate();
-  const [isAddMode, setIsAddMode] = useState(false);
+  const [isAddMode, toggleAddMode] = useToggle();
   const [todos, setTodos] = useState<TodoType[]>([]);
 
   function onClickLogout(e: React.MouseEvent) {
@@ -33,10 +34,6 @@ export default function Todos() {
     newTodos[targetIdx] = { ...newTodos[targetIdx], title, content };
 
     setTodos(newTodos);
-  }
-
-  function toggleAddMode() {
-    setIsAddMode((prev) => !prev);
   }
 
   useEffect(() => {
