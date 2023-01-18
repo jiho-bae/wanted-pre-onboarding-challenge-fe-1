@@ -9,10 +9,10 @@ import todoApi from '@apis/todo';
 import { TodoType } from '@src/types';
 
 interface AddTodoFormProps {
-  setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
+  addTodo: (todo: TodoType) => void;
 }
 
-export default function AddTodoForm({ setTodos }: AddTodoFormProps) {
+export default function AddTodoForm({ addTodo }: AddTodoFormProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
 
@@ -27,10 +27,10 @@ export default function AddTodoForm({ setTodos }: AddTodoFormProps) {
     const content = contentRef.current.value;
 
     const {
-      data: { date: todo },
+      data: { data: todo },
     } = await todoApi.create({ title, content });
 
-    setTodos((prevTodos) => [...prevTodos, { ...todo }]);
+    addTodo(todo);
   }
 
   return (
