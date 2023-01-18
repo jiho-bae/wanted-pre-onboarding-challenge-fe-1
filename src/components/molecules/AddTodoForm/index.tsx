@@ -26,10 +26,7 @@ export default function AddTodoForm({ addTodo }: AddTodoFormProps) {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-
-    const isNotRef =
-      !(titleRef.current instanceof HTMLInputElement) || !(contentRef.current instanceof HTMLTextAreaElement);
-    if (isNotRef) return;
+    if (!titleRef.current || !contentRef.current) return;
 
     const title = titleRef.current.value;
     const content = contentRef.current.value;

@@ -37,12 +37,7 @@ export default function JoinForm() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!isActiveBtn) return;
-
-    const isNotRef =
-      !(emailRef.current instanceof HTMLInputElement) ||
-      !(passwordRef.current instanceof HTMLInputElement) ||
-      !(passwordConfirmRef.current instanceof HTMLInputElement);
-    if (isNotRef) return;
+    if (!emailRef.current || !passwordRef.current || !passwordConfirmRef.current) return;
 
     const email = emailRef.current.value;
     const password = passwordRef.current.value;

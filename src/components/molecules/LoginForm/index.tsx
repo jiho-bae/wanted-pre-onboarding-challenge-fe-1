@@ -30,10 +30,7 @@ export default function LoginForm() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!isActiveBtn) return;
-
-    const isNotRef =
-      !(emailRef.current instanceof HTMLInputElement) || !(passwordRef.current instanceof HTMLInputElement);
-    if (isNotRef) return;
+    if (!emailRef.current || !passwordRef.current) return;
 
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
