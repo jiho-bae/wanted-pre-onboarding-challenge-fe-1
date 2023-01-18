@@ -19,6 +19,7 @@ const S = {
     min-width: 32rem;
     max-width: 76rem;
     margin: 0 auto;
+    animation: smoothAppear 1s;
   `,
 
   ContentContainer: styled.div`

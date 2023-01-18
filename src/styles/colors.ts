@@ -6,4 +6,5 @@ export const Colors = {
   white: '#FFFFFF',
 
   bgBlack: '#282c34',
+  bgTomato: '#FF9A99',
 };

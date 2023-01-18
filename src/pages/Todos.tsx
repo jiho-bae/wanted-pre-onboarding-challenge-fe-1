@@ -28,9 +28,13 @@ export default function Todos() {
     <Layout>
       <ContentTitle
         title="내 할일 목록"
-        titleColor={Colors.white}
+        titleColor={Colors.react}
         titleSize={FontSize.xl}
-        rightTabs={<Button onClick={onClickLogout}>로그아웃</Button>}
+        rightTabs={
+          <Button onClick={onClickLogout} bgColor={Colors.bgTomato}>
+            로그아웃
+          </Button>
+        }
       />
       <TodoList todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
       <AddTodo addTodo={addTodo} isAddMode={isAddMode} toggleAddMode={toggleAddMode} />
