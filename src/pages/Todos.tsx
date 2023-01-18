@@ -7,9 +7,10 @@ import AddTodo from '@components/organisms/AddTodo';
 import Button from '@components/atoms/Button';
 
 import todoApi from '@apis/todo';
-import { PATH, TOKEN_KEY } from '@libs/constant';
+import { PATH } from '@libs/constant';
 import { TodoType } from '@src/types';
 import { useToggle } from '@src/hooks';
+import storage from '@libs/storage';
 
 export default function Todos() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export default function Todos() {
 
   function onClickLogout(e: React.MouseEvent) {
     e.preventDefault();
-    localStorage.removeItem(TOKEN_KEY);
+    storage.removeToken();
 
     return navigate(PATH.home, { replace: true });
   }

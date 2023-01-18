@@ -7,6 +7,7 @@ import Button from '@components/atoms/Button';
 
 import userApi from '@apis/user';
 import { REGEX } from '@libs/constant';
+import storage from '@src/libs/storage';
 
 export default function JoinForm() {
   const [isActiveBtn, setIsActiveBtn] = useState(false);
@@ -54,16 +55,16 @@ export default function JoinForm() {
     } = await userApi.signUp({ email, password });
 
     if (token) {
-      localStorage.setItem('token', token);
+      storage.setToken(token);
       return navigate('/todos');
     }
   }
 
   return (
     <Form onChange={onChange} onSubmit={onSubmit}>
-      <Input type="email" name="email" ref={emailRef} />
-      <Input type="password" name="password" ref={passwordRef} />
-      <Input type="password" name="passwordConfirm" ref={passwordConfirmRef} />
+      <Input type="email" name="email" placeholder="email" ref={emailRef} />
+      <Input type="password" name="password" placeholder="password" ref={passwordRef} />
+      <Input type="password" name="passwordConfirm" placeholder="password confirm" ref={passwordConfirmRef} />
       <Button isActivate={isActiveBtn}>회원가입</Button>
     </Form>
   );

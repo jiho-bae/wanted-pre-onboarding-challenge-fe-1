@@ -6,6 +6,7 @@ import Input from '@components/atoms/Input';
 import Button from '@components/atoms/Button';
 
 import userApi from '@apis/user';
+import storage from '@libs/storage';
 import { REGEX } from '@libs/constant';
 
 export default function LoginForm() {
@@ -41,15 +42,15 @@ export default function LoginForm() {
     } = await userApi.login({ email, password });
 
     if (token) {
-      localStorage.setItem('token', token);
+      storage.setToken(token);
       return navigate('/todos');
     }
   }
 
   return (
     <Form onChange={onChange} onSubmit={onSubmit}>
-      <Input type="email" name="email" ref={emailRef} />
-      <Input type="password" name="password" ref={passwordRef} />
+      <Input type="email" name="email" placeholder="email" ref={emailRef} />
+      <Input type="password" name="password" placeholder="password" ref={passwordRef} />
       <Button isActivate={isActiveBtn}>로그인</Button>
     </Form>
   );
