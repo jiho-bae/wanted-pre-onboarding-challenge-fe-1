@@ -7,13 +7,14 @@ import { TodoType } from '@src/types';
 interface TodoListProps {
   todos: TodoType[];
   updateTodo: (todo: TodoType) => void;
+  deleteTodo: (id: string) => void;
 }
 
-export default function TodoList({ todos, updateTodo }: TodoListProps) {
+export default function TodoList({ todos, updateTodo, deleteTodo }: TodoListProps) {
   return (
     <S.Ul>
       {todos.map((todo, idx) => (
-        <TodoCard key={idx} todo={todo} updateTodo={updateTodo} />
+        <TodoCard key={idx} todo={todo} updateTodo={updateTodo} deleteTodo={deleteTodo} />
       ))}
     </S.Ul>
   );

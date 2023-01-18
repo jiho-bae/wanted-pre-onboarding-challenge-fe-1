@@ -36,6 +36,11 @@ export default function Todos() {
     setTodos(newTodos);
   }
 
+  function deleteTodo(id: string) {
+    const newTodos = [...todos].filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  }
+
   useEffect(() => {
     async function getTodos() {
       const {
@@ -50,7 +55,7 @@ export default function Todos() {
   return (
     <Layout>
       <Button onClick={onClickLogout}>로그아웃</Button>
-      <TodoList todos={todos} updateTodo={updateTodo} />
+      <TodoList todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
       <AddTodo addTodo={addTodo} isAddMode={isAddMode} toggleAddMode={toggleAddMode} />
     </Layout>
   );
