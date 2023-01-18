@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import styled from '@emotion/styled';
-import { AiOutlineDown, AiOutlineEdit } from 'react-icons/ai';
+import { AiOutlineDown, AiOutlineRollback } from 'react-icons/ai';
 
+import ContentTitle from '@components/molecules/ContentTitle';
 import Form from '@components/atoms/Form';
 import Input from '@components/atoms/Input';
 import TextArea from '@components/atoms/TextArea';
@@ -38,27 +38,16 @@ export default function EditTodoForm({ updateTodo, toggleEditMode, todo }: EditT
 
   return (
     <Form onSubmit={onSubmit}>
-      <S.TitleWrapper>
-        <div></div>
-        <S.TitleIconWrapper>
-          <AiOutlineEdit size={FontSize.l} color={Colors.darkGray} onClick={toggleEditMode} cursor="pointer" />
-          <AiOutlineDown size={FontSize.l} color={Colors.darkGray} cursor="pointer" onClick={onSubmit} />
-        </S.TitleIconWrapper>
-      </S.TitleWrapper>
+      <ContentTitle
+        rightTabs={
+          <>
+            <AiOutlineRollback size={FontSize.l} color={Colors.darkGray} onClick={toggleEditMode} cursor="pointer" />
+            <AiOutlineDown size={FontSize.l} color={Colors.darkGray} cursor="pointer" onClick={onSubmit} />
+          </>
+        }
+      />
       <Input type="text" name="title" placeholder="title" value={title} onChange={onChangeTitle} />
       <TextArea name="content" placeholder="content" value={content} onChange={onChangeContent} />
     </Form>
   );
 }
-
-const S = {
-  TitleWrapper: styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  `,
-  TitleIconWrapper: styled.div`
-    display: flex;
-    gap: 1rem;
-  `,
-};

@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
-import { BsFillBackspaceReverseFill } from 'react-icons/bs';
+import { AiOutlineRollback } from 'react-icons/ai';
 
+import ContentTitle from '@components/molecules/ContentTitle';
 import AddTodoForm from '@components/molecules/AddTodoForm';
 import Button from '@components/atoms/Button';
-import Title from '@components/atoms/Title';
+
 import Gap from '@components/atoms/Gap';
 
-import { BorderRadius, Colors, FontSize, FontWeight } from '@src/styles';
+import { BorderRadius, Colors, FontSize } from '@src/styles';
 import { TodoType } from '@src/types';
 
 interface AddTodoProps {
@@ -19,17 +20,12 @@ export default function AddTodo({ addTodo, toggleAddMode, isAddMode }: AddTodoPr
   if (isAddMode) {
     return (
       <S.Container>
-        <S.TitleWrapper>
-          <Title color={Colors.darkGray} fontWeight={FontWeight.bold}>
-            할일 추가하기
-          </Title>
-          <BsFillBackspaceReverseFill
-            size={FontSize.l}
-            color={Colors.darkGray}
-            onClick={toggleAddMode}
-            cursor="pointer"
-          />
-        </S.TitleWrapper>
+        <ContentTitle
+          title={'할일 추가하기'}
+          rightTabs={
+            <AiOutlineRollback size={FontSize.l} color={Colors.darkGray} onClick={toggleAddMode} cursor="pointer" />
+          }
+        />
         <Gap size="1rem" />
         <AddTodoForm addTodo={addTodo} />
       </S.Container>
