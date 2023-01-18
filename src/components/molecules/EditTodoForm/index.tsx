@@ -31,8 +31,10 @@ export default function EditTodoForm({ updateTodo, toggleEditMode, todo }: EditT
     e.preventDefault();
     if (!title || !content) return;
 
-    todoApi.update({ id: todo.id, title, content });
-    updateTodo({ ...todo, title, content });
+    if (todo.title !== title || todo.content !== content) {
+      todoApi.update({ id: todo.id, title, content });
+      updateTodo({ ...todo, title, content });
+    }
     toggleEditMode();
   }
 
