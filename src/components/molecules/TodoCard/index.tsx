@@ -1,9 +1,9 @@
-import styled from '@emotion/styled';
 import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai';
 
 import EditTodoForm from '@components/molecules/EditTodoForm';
 import ContentTitle from '@components/molecules/ContentTitle';
 import Card from '@components/atoms/Card';
+import Text from '@components/atoms/Text';
 
 import todoApi from '@apis/todo';
 import { useToggle } from '@src/hooks';
@@ -19,7 +19,6 @@ interface TodoCardProps extends React.ComponentProps<'li'> {
 export default function TodoCard({ updateTodo, deleteTodo, todo, ...props }: TodoCardProps) {
   const [isEditMode, toggleEditMode] = useToggle();
   const { id, title, content } = todo;
-  const contentChunk = content.split('\n');
 
   function onClickDeleteTodo() {
     const isRealDelete = window.confirm('정말로 삭제하실 건가요?');
@@ -49,22 +48,9 @@ export default function TodoCard({ updateTodo, deleteTodo, todo, ...props }: Tod
               </>
             }
           />
-          <S.P>
-            {contentChunk.map((chunk, idx) => (
-              <S.Span key={idx}>{chunk}</S.Span>
-            ))}
-          </S.P>
+          <Text>{content}</Text>
         </>
       )}
     </Card>
   );
 }
-
-const S = {
-  P: styled.p`
-    font-size: ${FontSize.m};
-  `,
-  Span: styled.span`
-    display: block;
-  `,
-};
