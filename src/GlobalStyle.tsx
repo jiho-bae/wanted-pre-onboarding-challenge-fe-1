@@ -21,6 +21,35 @@ const GlobalStyle = () => {
         code {
           font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
         }
+
+        *,
+        *::after,
+        *::before {
+          box-sizing: border-box;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-smoothing: antialiased;
+        }
+
+        @keyframes smoothAppear {
+          0% {
+            opacity: 0;
+            transform: translateY(-5%);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slide {
+          from {
+            transform: translateX(-100%);
+          }
+          to {
+            transform: translateX(0%);
+          }
+        }
       `}
     />
   );
