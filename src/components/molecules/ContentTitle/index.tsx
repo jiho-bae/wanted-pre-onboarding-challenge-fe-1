@@ -2,17 +2,24 @@ import styled from '@emotion/styled';
 
 import Title from '@components/atoms/Title';
 
-import { Colors, FontWeight } from '@src/styles';
+import { Colors, FontSize, FontWeight } from '@src/styles';
 
 interface ContentTitleProps extends React.ComponentProps<'div'> {
   title?: string;
+  titleColor?: string;
+  titleSize?: string;
   rightTabs?: JSX.Element | string;
 }
 
-export default function ContentTitle({ title = '', rightTabs = '', ...props }: ContentTitleProps) {
+export default function ContentTitle({
+  title = '',
+  titleColor = Colors.darkGray,
+  titleSize = FontSize.l,
+  rightTabs = '',
+}: ContentTitleProps) {
   return (
-    <S.TitleWrapper {...props}>
-      <Title color={Colors.darkGray} fontWeight={FontWeight.bold}>
+    <S.TitleWrapper>
+      <Title color={titleColor} fontWeight={FontWeight.bold} fontSize={titleSize}>
         {title}
       </Title>
       <S.TabWrapper>{rightTabs}</S.TabWrapper>
@@ -25,6 +32,7 @@ const S = {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   `,
   TabWrapper: styled.div`
     display: flex;
