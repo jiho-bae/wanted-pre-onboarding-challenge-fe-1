@@ -27,6 +27,14 @@ export default function Todos() {
     toggleAddMode();
   }
 
+  function updateTodo({ id, title, content }: TodoType) {
+    const newTodos = [...todos];
+    const targetIdx = newTodos.findIndex((todo) => todo.id === id);
+    newTodos[targetIdx] = { ...newTodos[targetIdx], title, content };
+
+    setTodos(newTodos);
+  }
+
   function toggleAddMode() {
     setIsAddMode((prev) => !prev);
   }
@@ -45,7 +53,7 @@ export default function Todos() {
   return (
     <Layout>
       <Button onClick={onClickLogout}>로그아웃</Button>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} updateTodo={updateTodo} />
       <AddTodo addTodo={addTodo} isAddMode={isAddMode} toggleAddMode={toggleAddMode} />
     </Layout>
   );
